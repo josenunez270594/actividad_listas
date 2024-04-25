@@ -1,0 +1,97 @@
+'''
+elaborar un programa en phyton que permita calcular el area de un lote y luego determinar el valor depenediendo de las
+siguientes condiciones:
+
+preguntar: frente y fondo
+
+1. ls_urbano = mt2= 25.000 y permiso.C = 45%
+2. ls_comercial = Mt2 = 60.000 y permiso.C = 75%
+3. ls_campestre = mt2 = 35.000 y permiso.C = 15%
+
+1 agregar
+2 mostrar lotes:
+    a ls_urbanos
+    b ls_comercial
+    c ls_campestre
+'''
+urb = [25000, 0.45]
+com = [60000, 0.75]
+camp = [35000, 0.15]
+
+import os
+ls_urbano = []
+ls_comercial = []
+ls_campestre = []
+def fnt_limpiar():
+    os.system("cls")
+    print('Autor: jose daniel nuñez😘\nUCLAM\n')
+
+def fnt_agregar(nombre, ancho, lado, precio):
+    global sw2
+    global tipo
+    if nombre == '' and lado == '' and ancho == '' and precio == '':
+        input('no hay ningun dato almacenado')
+    else:
+        if tipo == '1':
+            ls_urbano.append([nombre, ancho, lado, precio])
+            input('almacenado con exito')
+        if tipo == '2':
+            ls_comercial.append([nombre, ancho, lado, precio])
+            input('almacenado con exito')
+        if tipo == '3':
+            ls_campestre.append([nombre, ancho, lado, precio])
+            input('almacenado con exito')
+def fnt_selector(opcion):
+    global ls_urbano
+    global ls_comercial
+    global ls_campestre
+    global sw
+    if opcion == '1':
+        fnt_limpiar()
+        sw2 = True
+        while sw2 == True:
+            fnt_limpiar()
+            global tipo
+            tipo = input('tipo de lote:\n 1.Urbano\n 2.comercial\n 3.campestre\n 4.salir\n➡️   ')
+            if tipo == '1':
+                nombre = input('nombre: ')
+                ancho = int(input('ancho del lote:'))
+                lado = int(input('lado del lote:'))
+                precio = (ancho*lado)*urb[0]
+                aumento = precio*urb[1]
+                precio+= aumento
+            if tipo == '2':
+                nombre = input('nombre: ')
+                ancho = int(input('ancho del lote:'))
+                lado = int(input('lado del lote:'))
+                precio = (ancho*lado)*com[0]
+                aumento = precio*com[1]
+                precio+= aumento
+            if tipo == '3':
+                nombre = input('nombre: ')
+                ancho = int(input('ancho del lote:'))
+                lado = int(input('lado del lote:'))
+                precio = (ancho*lado)*com[0]
+                aumento = precio*com[1]
+                precio+= aumento
+            if tipo == '4':
+                sw2 = False
+            fnt_agregar(nombre, ancho, lado, precio)
+    elif opcion == '2':
+        fnt_limpiar()
+        print(ls_urbano)
+        print(ls_comercial)
+        print(ls_campestre)
+        input('mostrado con exito')
+    elif opcion == '3':
+        fnt_limpiar()
+        sw = False
+    else:
+        fnt_limpiar()
+        print('opcion incorrecta')
+        input('presione <ENTER> para continuar')
+sw = True
+while sw == True:
+    fnt_limpiar()
+    op = input('😈😈MENU SELECTOR😈😈\n\n1.ingresar\n2.mostrar\n3.salir\n➡️  ')
+    fnt_selector(op)
